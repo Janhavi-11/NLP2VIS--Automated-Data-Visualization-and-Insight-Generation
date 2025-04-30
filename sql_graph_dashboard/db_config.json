@@ -1,0 +1,6 @@
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "NewPassword",
+    "database": "student_db"
+  }

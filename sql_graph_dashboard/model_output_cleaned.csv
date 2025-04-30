@@ -1,0 +1,227 @@
+NLP Query,SQL Query,chart type
+What is the average CET score for students in the Electronics department?,"SELECT sri.sem, AVG(CAST(sri.cst)) AS avg_cst FROM students_result_info sri GROUP BY sri.sem",bar chart
+Show the total number of female students in the Computer Science department.,SELECT COUNT(*) FROM students_result_info WHERE sri.result = 'female' GROUP BY sri.sem,bar chart
+What is the maximum diploma score of students in the Mechanical department?,SELECT MAX(diploma) FROM students_prev_edu spe JOIN student_admss_info sa ON spe.pid = sa.pid WHERE sa.Department = 'Mechanic' AND sa.diploma = 'Yes' AND sa.diploma = 'Yes' AND sa.diploma = 'Yes';,bar chart
+How many students from the Mechanical department participated in hobbies like singing?,SELECT COUNT(*) FROM students_hobby_info WHERE hobby_singing = '1' GROUP BY 'MECH' AND 'COUNT' FROM students_hobby_info,bar chart
+What is the minimum CET score of students who were placed last year?,"SELECT sri.sem, AVG(CAST(sri.cst)) AS avg_cst FROM students_result_info sri GROUP BY sri.sem",bar chart
+How many male students scored above 90% in their diploma?,SELECT sai.diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid WHERE sai.diploma IS NOT NULL,scatter plot
+What is the average placement package for students from the Electronics department?,"SELECT sai.department, AVG(spe.pl) FROM students_placement sp JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.department",bar chart
+Show the total number of students who are placed in 2020.,SELECT COUNT(*) FROM students_placement sp JOIN student_admss_info sa ON sp.pid = sa.pid WHERE sa.pid = '2020' AND sa.pid WHERE sa.pid = '2020' AND sa.pid = '2020';,bar chart
+What is the average GPA of students in the Computer Science department who were not placed?,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+How many students from the Electrical department participated in national-level sports?,SELECT COUNT(*) FROM students_result_info WHERE sri.result = '1' GROUP BY sri.sem,bar chart
+Show the maximum score in HSC among the female students.,"SELECT sri.sem, AVG(CAST(sri.gender)) AS avg_gender FROM students_result_info sri GROUP BY sri.sem",bar chart
+What is the total count of male students in the 2019 academic year?,SELECT COUNT(*) FROM students_result_info WHERE sri.result = 'male';,bar chart
+How many students from the Computer Science department have a hobby of reading books?,SELECT COUNT(*) FROM students_hobby_info WHERE sp.HOBby = '1' GROUP BY sp.,
+What is the average GPA of students in the Electronics department who were placed in 2021?,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+I want the number of placed CMPN students,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'CMPN';,bar chart
+Provide the total of placed CMPN students,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE cs.pid = 'CMPN';,bar chart
+Display total placed students in MECH,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'MECH';,bar chart
+Show the placement count for MECH branch,SELECT COUNT(*) FROM students_placement sp JOIN student_admss_info sa ON sp.pid = sa.pid WHERE sa.Placed = 'Yes' AND sa.Placed = 'Yes';,bar chart
+Give the total of ELEC students who got placed,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'ELEC';,bar chart
+Retrieve how many ELEC students are placed,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE cs.branch = 'ELEC' AND cs.branch = 'ELEC' AND sp.Placed = 'Yes' AND cs.branch = 'ELEC' AND sp.Placed = 'Yes' AND cs.branch = 'Y',
+Display total placed students in INFT,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'INFT';,bar chart
+Show me the number of placed INFT students,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'INFT';,bar chart
+Display total placed students in EXTC,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'EXTC';,bar chart
+Show total placed students from EXTC,SELECT COUNT(*) FROM college_students cs JOIN students_placement sp ON cs.pid = sp.pid WHERE sp.Placed = 'Yes' AND cs.branch = 'EXTC';,bar chart
+How many EXTC students got placed?,SELECT COUNT(*) FROM students_placement sp JOIN student_admss_info sa ON sp.pid = sa.pid WHERE sa.pid = 'EXTC' AND sa.pid WHERE sa.pid = 'EXTC' AND sa.pid WHERE sa.pid = 'Yes' AND sa.pid WHERE sa.pid,
+Retrieve hobby count and gpa comparison if available.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Show student count by admission status if available.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Retrieve hsc and cet scores in summary.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Give students per hobby category as needed.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+List expert-level hobby count per hobby please.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Give average diploma scores by admission year please.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Give semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+List student count by admission status by group.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Provide student count by admission status as needed.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Reveal number of students for each admission status if available.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Return students per hobby category please.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Fetch diploma and cet score comparison please.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve students passed vs failed as needed.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Return students passed in each semester.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Retrieve distribution of student results.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Display distribution of student results if available.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Show students in each entrance category as needed.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Get number of students for each admission status by group.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Show average diploma scores by admission year now.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Show average gpa per semester.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Get students per hobby category please.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Get semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Display students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Retrieve hsc and cet scores.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Provide diploma and cet score comparison please.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+List students passed vs failed please.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Reveal students passed vs failed.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Return number of students for each admission status in summary.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Display number of students for each admission status if available.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+List semester-wise gpa now.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Fetch students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Reveal diploma and cet score comparison in summary.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Reveal students per hobby category by group.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+List number of students for each admission status as needed.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Fetch hobby count and gpa comparison please.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+List students per hobby category please.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Retrieve semester-wise gpa in summary.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+List hobby count and gpa comparison in summary.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide students per hobby category now.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Get student count by admission status if available.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Retrieve average gpa per semester if available.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Fetch students per hobby category if available.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Display students passed vs failed.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Give distribution of student results please.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Provide hsc and cet scores please.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve average gpa per semester now.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Fetch number of students for each admission status please.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Display distribution of student results now.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Get students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Display students passed in each semester now.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Show hobby count and gpa comparison now.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Retrieve number of students for each admission status.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Return students passed vs failed by group.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Retrieve hsc and cet scores please.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Show hsc and cet scores now.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve average gpa per semester in summary.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Get distribution of student results now.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Display students passed vs failed if available.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Display students per hobby category in summary.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Show hobby count and gpa comparison.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide average gpa per semester in summary.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Provide students in each entrance category in summary.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Display semester-wise gpa now.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Retrieve diploma and cet score comparison as needed.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Get semester-wise gpa as needed.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Fetch students in each entrance category in summary.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Give number of students for each admission status as needed.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+List hobby count and gpa comparison by group.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Retrieve hsc and cet scores if available.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Return semester-wise gpa as needed.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Display number of students for each admission status as needed.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Fetch student count by admission status please.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Reveal semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+List hobby count and gpa comparison.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide hsc and cet scores as needed.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Give hobby count and gpa comparison.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Display students in each entrance category by group.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Give students per hobby category in summary.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Show semester-wise gpa by group.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Retrieve semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Return distribution of student results by group.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Provide gpa by admission year if available.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Get students in each entrance category in summary.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Give hobby count and gpa comparison if available.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Get hobby count and gpa comparison as needed.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide semester-wise gpa if available.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Return hobby count and gpa comparison by group.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Reveal average gpa per semester now.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Provide students per hobby category by group.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Fetch diploma and cet score comparison.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Give students passed in each semester if available.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+List students passed vs failed as needed.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Fetch number of students for each admission status.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Fetch average diploma scores by admission year now.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Get expert-level hobby count per hobby now.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Get students passed in each semester now.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Fetch students passed in each semester as needed.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Display student count by admission status.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Return number of students for each admission status now.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Show distribution of student results please.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+List diploma and cet score comparison if available.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve average diploma scores by admission year by group.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Fetch expert-level hobby count per hobby.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Provide distribution of student results by group.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Return semester-wise gpa if available.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Reveal students passed vs failed by group.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Provide hobby count and gpa comparison if available.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Get students passed vs failed if available.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Display diploma and cet score comparison by group.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Show gpa by admission year as needed.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Reveal students in each entrance category in summary.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Show students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Get students per hobby category now.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Provide hobby count and gpa comparison by group.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Reveal student count by admission status please.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Fetch number of students for each admission status now.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Give student count by admission status by group.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+List average diploma scores by admission year please.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Provide students per hobby category if available.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Reveal students per hobby category please.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+List average gpa per semester as needed.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+List average diploma scores by admission year as needed.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Get students passed vs failed.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Show students passed in each semester by group.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Show students per hobby category now.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Display student count by admission status if available.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Fetch average diploma scores by admission year in summary.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Give student count by admission status if available.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Show students passed vs failed by group.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Fetch student count by admission status as needed.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Fetch gpa by admission year in summary.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Retrieve students in each entrance category if available.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Reveal expert-level hobby count per hobby.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Give semester-wise gpa as needed.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Show hsc and cet scores by group.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Provide average diploma scores by admission year as needed.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Return students passed vs failed in summary.,"SELECT result, COUNT(*) AS count FROM students_result_info WHERE result IN ('0', '1') GROUP BY result",pie chart
+Give students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Return diploma and cet score comparison.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Show students in each entrance category.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Give average diploma scores by admission year as needed.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Retrieve distribution of student results if available.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Return average gpa per semester if available.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+List students passed in each semester now.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Provide hsc and cet scores now.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+List gpa by admission year please.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Provide expert-level hobby count per hobby as needed.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Provide average diploma scores by admission year now.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+List student count by admission status.,"SELECT stat, COUNT(*) AS count FROM student_admss_info GROUP BY stat",pie chart
+Provide hobby count and gpa comparison please.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide students in each entrance category by group.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Return diploma and cet score comparison if available.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Display expert-level hobby count per hobby please.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Give hobby count and gpa comparison please.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Display hsc and cet scores if available.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve expert-level hobby count per hobby please.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Display students per hobby category now.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Get distribution of student results.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Give diploma and cet score comparison now.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve students per hobby category if available.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Provide hobby count and gpa comparison.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Retrieve students passed in each semester now.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Get number of students for each admission status.,"SELECT sai.stat, COUNT(*) AS student_count FROM student_admss_info sai GROUP BY sai.stat",bar chart
+Show average diploma scores by admission year please.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Give distribution of student results in summary.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Reveal students per hobby category now.,"SELECT ECategory, COUNT(*) AS total FROM students_hobby_info GROUP BY ECategory",pie chart
+Reveal gpa by admission year now.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Retrieve students passed in each semester in summary.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Show gpa by admission year please.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Get expert-level hobby count per hobby in summary.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+List semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Reveal hsc and cet scores in summary.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Give average gpa per semester as needed.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+List students passed in each semester if available.,"SELECT sri.sem, COUNT(*) AS passed_students FROM students_result_info sri WHERE sri.result = '1' GROUP BY sri.sem",bar chart
+Get semester-wise gpa if available.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot
+Return average gpa per semester by group.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Return average diploma scores by admission year now.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Give average diploma scores by admission year by group.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Display average diploma scores by admission year if available.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Fetch distribution of student results if available.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Provide distribution of student results please.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Get hsc and cet scores.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Get average diploma scores by admission year please.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+List distribution of student results in summary.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Reveal expert-level hobby count per hobby now.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Show expert-level hobby count per hobby please.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+List distribution of student results by group.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Get hsc and cet scores in summary.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Provide diploma and cet score comparison now.,"SELECT diploma, cet FROM students_prev_edu WHERE diploma IS NOT NULL AND cet IS NOT NULL",scatter plot
+Retrieve expert-level hobby count per hobby by group.,"SELECT Hobby, COUNT(*) AS expert_count FROM students_hobby_info WHERE Hobby_level = 'Expert' GROUP BY Hobby",bar chart
+Display hobby count and gpa comparison by group.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Return average diploma scores by admission year by group.,"SELECT sai.acadyear, AVG(spe.diploma) AS avg_diploma FROM students_prev_edu spe JOIN student_admss_info sai ON spe.pid = sai.pid GROUP BY sai.acadyear",bar chart
+Fetch distribution of student results now.,"SELECT result, COUNT(*) AS total FROM students_result_info GROUP BY result",pie chart
+Reveal hsc and cet scores if available.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Reveal hobby count and gpa comparison in summary.,"SELECT COUNT(shi.Hobby) AS hobby_count, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_hobby_info shi JOIN students_result_info sri ON shi.pid = sri.pid GROUP BY shi.pid",scatter plot
+Provide students in each entrance category please.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Get hsc and cet scores by group.,"SELECT hsc, cet FROM students_prev_edu WHERE hsc IS NOT NULL AND cet IS NOT NULL",scatter plot
+Display gpa by admission year please.,"SELECT sai.acadyear, CAST(sri.gpa AS FLOAT) AS gpa FROM students_result_info sri JOIN student_admss_info sai ON sri.pid = sai.pid WHERE sri.gpa IS NOT NULL",scatter plot
+Return average gpa per semester now.,"SELECT sri.sem, AVG(CAST(sri.gpa AS FLOAT)) AS avg_gpa FROM students_result_info sri GROUP BY sri.sem",bar chart
+Give students in each entrance category.,"SELECT ECategory, COUNT(*) AS count FROM students_hobby_info GROUP BY ECategory",pie chart
+Return semester-wise gpa.,"SELECT sem, CAST(gpa AS FLOAT) AS gpa FROM students_result_info WHERE gpa IS NOT NULL",scatter plot

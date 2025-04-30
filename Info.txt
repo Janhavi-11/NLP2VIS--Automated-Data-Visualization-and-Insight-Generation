@@ -1,0 +1,5 @@
+cd "E:\Major Project\nlp2vis"
+python -m venv venv(To create)
+.\venv\Scripts\Activate
+python app.py
+deactivate

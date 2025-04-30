@@ -1,0 +1,8 @@
+venv/
+t5base_sql_chart_model_finetuned/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+Thumbs.db

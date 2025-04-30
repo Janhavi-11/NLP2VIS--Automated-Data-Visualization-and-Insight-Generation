@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP2VIS - Enhance Your Creativity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__logo">NLP2VIS</div>
+    </nav>
+    <div class="main-container">
+        <div class="left-container">
+            <h1 class="main-title">NLP2VIS</h1>
+            <h1 class="main-title">Enhance Your Creativity and Productivity</h1>
+            <p class="sub-text">Chat to visualize your data in a better form.</p>
+            <a href="/chat" class="chat-button">Chat with NLP2VIS</a>
+        </div>
+        <div class="right-container">
+            <div class="chart-container">
+                <p class="query-text">Query: Show me a bar chart of sales data</p>
+                <img src="{{ url_for('static', filename='images/image1.png') }}" class="active" alt="Graph 1">
+                <img src="{{ url_for('static', filename='images/image2.png') }}" alt="Graph 2">
+                <img src="{{ url_for('static', filename='images/image3.png') }}" alt="Graph 3">
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

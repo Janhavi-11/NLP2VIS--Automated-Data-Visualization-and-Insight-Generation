@@ -1,0 +1,1 @@
+pip install flask torch pandas matplotlib numpy mysql-connector-python sentence-transformers transformers
